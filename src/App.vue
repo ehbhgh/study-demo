@@ -1,28 +1,69 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="openDropt($event)">SHOWPriamy</button>
+    <button @click="openDropt($event)">SHOWDanger</button>
+    <button @click="openDropt($event)">SHOWWarn</button>
+    <button @click="openDropt($event)">SHOWSuccess</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    // MessageBox,
+  },
+  methods: {
+    openDropt(e) {
+      switch (e.srcElement.innerText) {
+        case "SHOWPriamy":
+          this.$messageBox.info(
+            {
+              title: "App tititle",
+              content: "这是一段内容",
+            },
+            () => {
+              console.log("展示primary页面");
+            }
+          );
+          break
+        case "SHOWWarn":
+          this.$messageBox.warn(
+            {
+              title: "App tititle",
+              content: "这是一段内容",
+            },
+            () => {
+              console.log("展示warn页面");
+            }
+          );
+            break
+        case "SHOWDanger":
+          this.$messageBox.danger(
+            {
+              title: "App tititle",
+              content: "这是一段内容",
+            },
+            () => {
+              console.log("展示danger页面");
+            }
+          );
+            break
+        default:
+          this.$messageBox.success(
+            {
+              title: "App tititle",
+              content: "这是一段内容",
+            },
+            () => {
+              console.log("展示success页面");
+            }
+          );
+      }
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
